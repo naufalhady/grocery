@@ -2,6 +2,8 @@
 
 Grocery Management System adalah aplikasi manajemen toko kelontong yang dibangun menggunakan Dart dan framework Vania.
 
+Untuk dokumentasi postman bisa dilihat di link berikut: https://s.id/Testing-Vania-API
+
 ## Fitur
 
 - Manajemen Produk
