@@ -1,6 +1,5 @@
 import 'package:vania/vania.dart';
 import 'package:grocery/app/models/vendor.dart'; // Import VendorModel
-// import 'package:vania/src/exception/validation_exception.dart';
 
 class VendorController extends Controller {
   // Method to list all vendors

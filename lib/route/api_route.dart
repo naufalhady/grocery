@@ -6,6 +6,11 @@ import 'package:grocery/app/http/controllers/orderitem_controller.dart';
 import 'package:grocery/app/http/controllers/productnote_controller.dart';
 import 'package:grocery/app/http/controllers/vendor_controller.dart';
 
+import 'package:grocery/app/http/controllers/auth_controller.dart';
+import 'package:grocery/app/http/controllers/todo_controller.dart';
+import 'package:grocery/app/http/controllers/user_controller.dart';
+import 'package:grocery/app/http/middleware/authenticate.dart';
+
 class ApiRoute implements Route {
   @override
   void register() {
@@ -23,7 +28,6 @@ class ApiRoute implements Route {
     Router.put("/orders/{id}", orderController.update);
     Router.delete("/orders/{id}", orderController.destroy);
 
-
     Router.resource("/orderitems", orderItemController);
     Router.put("/orderitems/{id}", orderItemController.update);
     Router.delete("/orderitems/{id}", orderItemController.destroy);
@@ -35,5 +39,21 @@ class ApiRoute implements Route {
     Router.resource("/vendors", vendorController);
     Router.put("/vendors/{id}", vendorController.update);
     Router.delete("/vendors/{id}", vendorController.destroy);
+
+    Router.group(() {
+      Router.post('register', authController.register);
+      Router.post('login', authController.login);
+    }, prefix: 'auth');
+
+    Router.get('logout', authController.me).middleware([AuthenticateMiddleware()]);
+
+    Router.group(() {
+      Router.patch('update-password', userController.updatePassword);
+      Router.get('', userController.index);
+    }, prefix: 'user', middleware: [AuthenticateMiddleware()]);
+
+    Router.group(() {
+      Router.post('todo', todoController.store);
+    }, prefix: 'todo', middleware: [AuthenticateMiddleware()]);
   }
 }

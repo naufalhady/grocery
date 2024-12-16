@@ -1,7 +1,6 @@
 import 'package:vania/vania.dart';
 import 'package:grocery/app/models/productnote.dart'; // Import ProductNoteModel
 import 'package:grocery/app/models/product.dart'; // Import ProductModel jika diperlukan
-// import 'package:vania/src/exception/validation_exception.dart';
 
 class ProductNotesController extends Controller {
   // Fetch all product notes

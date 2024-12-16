@@ -10,7 +10,6 @@ class CreateProductNotesTable extends Migration {
       char('prod_id',length: 10);
       date('note_date');
       text('note');
-      // timeStamps();
 
       
       foreign('prod_id', 'products', 'prod_id', constrained: true, onDelete: 'CASCADE');
